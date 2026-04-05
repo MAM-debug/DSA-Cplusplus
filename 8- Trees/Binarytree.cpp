@@ -1,33 +1,58 @@
 #include <iostream>
 using namespace std;
 
-class Node {
-public:
+struct Node {
     int data;
-    Node* left; // address of left child
-    Node* right; // address of right child
-
-    Node(int value) {
-        data = value;
-        left = NULL;//pointing to null because when we create a new node, it does not have any children yet.
-        right = NULL;
+    Node* left;
+    Node*right;
+    Node(int value){
+        data=value;
+        left=NULL;
+        right=NULL;
     }
-};
 
-int main() {
-    // Creating a binary tree
-    Node* root = new Node(1); // root node
-    root->left = new Node(2); // left child of root
-    root->right = new Node(3); // right child of root
-    root->left->left = new Node(4); // left child of node 2
-    root->left->right = new Node(5); // right child of node 2
+void inorder(Node* root) {
+    if (root == NULL) {
+        return;
+    }
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+void preorder(Node* root) {
+    if (root == NULL) {
+        return;
+    }
+    cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
 
-    // The structure of the binary tree is as follows:
-    //         1
-    //        / \
-    //       2   3
-    //      / \
-    //     4   5
-
+void postorder(Node* root) {
+    if (root == NULL) {
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " "; //dry run karna hai inorder, preorder, postorder ka 
+}
+int main(){
+    Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    
+    cout << "Root: " << root->data << endl;
+    cout << "Left child of root: " << root->left->data << endl;
+    cout << "Right child of root: " << root->right->data << endl;
+    cout << "Left child of left child: " << root->left->left->data << endl;
+    cout << "Right child of left child: " << root->left->right->data << endl;
+    cout << "Inorder traversal: ";
+    inorder(root);
+    cout << "\nPreorder traversal: ";
+    preorder(root);
+    cout << "\nPostorder traversal: ";
+    postorder(root);
     return 0;
 }

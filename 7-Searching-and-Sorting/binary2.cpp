@@ -24,7 +24,7 @@ int main(){
     cout<<"enter what key you want to search: ";
     cin>>key;
     int result=binarysearch(key,0,arr_size-1);
-    if(result==-1){
+    if(result==arr_size-1){
         cout<<"key not found in the array"<<endl;
     }
     else{

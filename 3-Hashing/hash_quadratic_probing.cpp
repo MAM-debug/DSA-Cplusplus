@@ -1,33 +1,22 @@
 #include <iostream>
 using namespace std;
-
-int hashfunction (int key,int tablesize)
+int tablesize=10; // Hash table of size 10
+int hashfunction (int key)
 {
-    return key % tablesize;
-}
+    return key % tablesize; // Simple hash function
+};
 
-void quadriticprob (int key,int tablesize,int hashtable[]){
-    int original=hashfunction(key,tablesize);
-    int hashindex=original;
+void insert(int key,int hashtable[]){
+    int idex=hashfunction(key);
     int i=0;
-    while(hashtable[hashindex] != -1){
-        cout<<"sorry this place is full"<<endl;
+    while(hashtable[idex]!=-1 && hashtable[idex]!=-2){ // Quadratic probing to resolve collision
+        cout<<"Collision occurred for key "<<key<<" at index "<<idex<<endl;
         i++;
-        hashindex=(original+(i*i))%tablesize;
+        idex=(hashfunction(key)+i*i)%tablesize; // Move to the next index using quadratic probing
+        if(i==tablesize){ // If we have probed all indices, the table is full
+            cout<<"Hash table is full, cannot insert key "<<key<<endl;
+            return;
+        }
     }
-    hashtable[hashindex]=key;
-    cout<<"key:"<<key<<" is at index:"<<hashindex<<endl;
-}
-int main()
-{
-    int key[]={8,15,22,29,36};
-    int tablesize=7;
-    int hashtable[7];
-    for(int i=0;i<tablesize;i++){
-        hashtable[i]=-1;
-    }
-    for(int i=0;i<5;i++){
-        quadriticprob(key[i],tablesize,hashtable);
-    }
-    return 0;
+    hashtable[idex]=key; // Insert the key at the found index
 }

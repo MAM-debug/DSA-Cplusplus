@@ -1,62 +1,78 @@
 #include <iostream>
 using namespace std;
 
+const int tablesize = 10;
+
 struct Node {
     int data;
     Node* next;
+    Node(int value) {
+        data = value;
+        next = nullptr;
+    }
 };
 
-void insertChaining(int key, int tablesize, Node* hashtable[]) {
-    int hashindex = key % tablesize;
-    
-    Node* newNode = new Node();
-    newNode->data = key;
-    newNode->next = NULL;
-    
-    if (hashtable[hashindex] == NULL) {
-        hashtable[hashindex] = newNode;
-        cout << "Student " << key << " is FIRST at position " << hashindex << endl;
-    }
-    else {
-        Node* temp = hashtable[hashindex];
-        while (temp->next != NULL) {
-            temp = temp->next;
-        }
-        temp->next = newNode;
-        cout << "Student " << key << " CHAINED at position " << hashindex << endl;
-    }
+Node* hashTable[tablesize] = {nullptr};
+
+int hashfunction(int key) {
+    return key % tablesize;
 }
 
-void display(Node* hashtable[], int tablesize) {
-    cout << "\nFinal Hash Table:\n";
-    for (int i = 0; i < tablesize; i++) {
-        cout << "Position " << i << ": ";
-        
-        if (hashtable[i] == NULL) {
-            cout << "Empty";
-        } else {
-            Node* temp = hashtable[i];
-            while (temp != NULL) {
-                cout << temp->data << " -> ";
-                temp = temp->next;
+void insert(int key) {
+    int index = hashfunction(key);
+    Node* newNode = new Node(key);
+
+    newNode->next = hashTable[index];
+    hashTable[index] = newNode;
+}
+
+void del(int key) {
+    int index = hashfunction(key);
+    Node* current = hashTable[index];
+    Node* prev = nullptr;
+
+    while(current != nullptr) {
+        if(current->data == key) {
+            if(prev == nullptr) {
+                hashTable[index] = current->next;
+            } else {
+                prev->next = current->next;
             }
-            cout << "NULL";
+            delete current;
+            return;
         }
-        cout << endl;
+        prev = current;
+        current = current->next;
     }
+
+    cout << "Key not found\n";
+}
+
+void search(int key) {
+    int index = hashfunction(key);
+    Node* current = hashTable[index];
+
+    while(current != nullptr) {
+        if(current->data == key) {
+            cout << "Key found\n";
+            return;
+        }
+        current = current->next;
+    }
+
+    cout << "Key not found\n";
 }
 
 int main() {
-    int students[] = {8, 15, 22, 29, 36};
-    int tablesize = 7;
-    Node* hashtable[7] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL};
-    
-    for (int i = 0; i < 5; i++) {
-        insertChaining(students[i], tablesize, hashtable);
-    }
-    
-    display(hashtable, tablesize);
-    
-    return 0;
+    insert(5);
+    insert(15);
+    insert(25);
 
+    search(15);
+    search(35);
+
+    del(15);
+    search(15);
+
+    return 0;
 }

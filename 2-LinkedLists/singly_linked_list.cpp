@@ -92,28 +92,36 @@ void search(int key){
     cout<<"Key not found"<<endl;
 }
 void del(int key){
-    Node*prev=head;
-    Node*curr=head->next;
-    if(head==nullptr){
-        cout<<"List is empty"<<endl;
+
+    if(head == nullptr){
+        cout << "List is empty" << endl;
         return;
     }
-    if(head->data==key){
+
+    if(head->data == key){
         popFront();
         return;
     }
-    if(tail->data==key){
+
+    if(tail->data == key){
         popBack();
         return;
     }
-    while(curr->next!=nullptr && curr->data!=key){
-        prev=curr;
-        curr=curr->next;
+    Node* prev = head;
+    Node* curr = head->next;
+
+    while(curr != nullptr && curr->data != key){
+        prev = curr;
+        curr = curr->next;
     }
-    prev->next=curr->next;
+    if(curr == nullptr){
+        cout << "Value not found" << endl;
+        return;
+    }
+    prev->next = curr->next;
     delete curr;
-    
 }
+
 
 void display(){
     if(head == nullptr){

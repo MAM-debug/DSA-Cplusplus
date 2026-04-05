@@ -48,6 +48,9 @@ void popfront(){
     if(head!=nullptr){
         head->prev=nullptr;
     }
+    else{
+        tail=nullptr;
+    }
     
     delete temp;
     }
@@ -57,7 +60,7 @@ void popback(){
         return;
     }
     Node*temp=tail;
-    if(tail=nullptr){
+    if(tail==nullptr){
         head=tail=nullptr;
     }
     else{
@@ -102,13 +105,42 @@ void del(int key){
         popback();
         return; 
     }
-    Node*temp=head->next;
-    while(temp!=nullptr){
-        if(temp->data=key){
-            temp->prev->next=temp->next;
-            temp->next-prev=temp->prev;
+Node* temp = head->next;
+
+while(temp != nullptr){
+    if(temp->data == key){
+
+        temp->prev->next = temp->next;
+
+        if(temp->next != nullptr){  
+            temp->next->prev = temp->prev;
+        } else {
+            tail = temp->prev;       
         }
+
         delete temp;
         return;
-}
+    }
 
+    temp = temp->next;
+}
+    cout<<"key not found in the list"<<endl;
+}
+int main() {
+    pushback(10);
+    pushback(20);
+    pushback(30);
+    pushfront(5);
+    pushfront(1);
+    display();
+
+    search(20);
+    search(100);
+
+    del(10);
+    del(1);
+    del(100); // key not found case
+    display();
+
+    return 0;
+}
