@@ -1,41 +1,53 @@
-# 7. Searching and Sorting
+# Searching and Sorting
 
-Implementation of searching and sorting algorithms. Various searching techniques and sorting approaches.
+Implementations of common searching and sorting algorithms.
 
-## Files in this Topic
+## Files
 
-### binary_search.cpp
-Binary Search implementation (iterative/recursive) for sorted arrays.
+- binary_search.cpp: binary search implementation
+- binary2.cpp: alternate binary search implementation
+- bubblesort.cpp: bubble sort
+- insertionsort.cpp: insertion sort
+- iselectionsort.cpp: selection sort
+- merge_sort.cpp: merge sort
+- quick_sort.cpp: quick sort
+- quick_sort_mid_pivot.cpp: quick sort with middle pivot
+- stablevsunstable.cpp: stable vs unstable sorting behavior
 
-### merge_sort.cpp
-Merge Sort implementation using divide and conquer approach.
-
-### quick_sort.cpp
-Quick Sort implementation with last element as pivot.
-
-### quick_sort_mid_pivot.cpp
-Alternative Quick Sort implementation with middle element as pivot.
-
-## How to Compile and Run
+## Compile and Run
 
 ```bash
-g++ -o binary_search binary_search.cpp
+g++ -std=c++17 -g binary_search.cpp -o binary_search.exe
 ./binary_search.exe
 
-g++ -o merge_sort merge_sort.cpp
+g++ -std=c++17 -g binary2.cpp -o binary2.exe
+./binary2.exe
+
+g++ -std=c++17 -g bubblesort.cpp -o bubblesort.exe
+./bubblesort.exe
+
+g++ -std=c++17 -g insertionsort.cpp -o insertionsort.exe
+./insertionsort.exe
+
+g++ -std=c++17 -g iselectionsort.cpp -o iselectionsort.exe
+./iselectionsort.exe
+
+g++ -std=c++17 -g merge_sort.cpp -o merge_sort.exe
 ./merge_sort.exe
 
-g++ -o quick_sort quick_sort.cpp
+g++ -std=c++17 -g quick_sort.cpp -o quick_sort.exe
 ./quick_sort.exe
 
-g++ -o quick_sort_mid_pivot quick_sort_mid_pivot.cpp
+g++ -std=c++17 -g quick_sort_mid_pivot.cpp -o quick_sort_mid_pivot.exe
 ./quick_sort_mid_pivot.exe
+
+g++ -std=c++17 -g stablevsunstable.cpp -o stablevsunstable.exe
+./stablevsunstable.exe
 ```
 
 ## Concepts Covered
-- Linear search algorithm
-- Time complexity: O(n)
-- Divide and conquer algorithms (Merge Sort)
-- Partition-based sorting (Quick Sort)
-- Different pivot selection strategies
-- Time and space complexity analysis
+
+- binary search on sorted input
+- iterative and divide-and-conquer sorting
+- stability differences in sorting algorithms
+- pivot strategy effects in quick sort

@@ -1,45 +1,36 @@
-# 3. Hashing
+# Hashing
 
-Hash table and hashing techniques implementation. Multiple variations and approaches to hashing algorithms.
+Examples of hash table construction and collision resolution.
 
-## Files in this Topic
+## Files
 
-### hash_basic.cpp
-Basic hash function implementation using modulo operation.
+- hash_basic.cpp: basic hashing with modulo indexing
+- hash_linear_probing.cpp: open addressing with linear probing
+- hash_quadratic_probing.cpp: open addressing with quadratic probing
+- hash_separate_chaining.cpp: collision handling with chaining
+- hash_double_hashing.cpp: collision handling with double hashing
 
-### hash_linear_probing.cpp
-Hash table with linear probing collision handling.
-
-### hash_quadratic_probing.cpp
-Hash table with quadratic probing collision handling.
-
-### hash_separate_chaining.cpp
-Hash table with separate chaining using linked lists.
-
-### hash_double_hashing.cpp
-Alternative quadratic probing implementation with different approach.
-
-## How to Compile and Run
+## Compile and Run
 
 ```bash
-g++ -o hash_basic hash_basic.cpp
+g++ -std=c++17 -g hash_basic.cpp -o hash_basic.exe
 ./hash_basic.exe
 
-g++ -o hash_linear_probing hash_linear_probing.cpp
+g++ -std=c++17 -g hash_linear_probing.cpp -o hash_linear_probing.exe
 ./hash_linear_probing.exe
 
-g++ -o hash_quadratic_probing hash_quadratic_probing.cpp
+g++ -std=c++17 -g hash_quadratic_probing.cpp -o hash_quadratic_probing.exe
 ./hash_quadratic_probing.exe
 
-g++ -o hash_separate_chaining hash_separate_chaining.cpp
+g++ -std=c++17 -g hash_separate_chaining.cpp -o hash_separate_chaining.exe
 ./hash_separate_chaining.exe
 
-g++ -o hash_double_hashing hash_double_hashing.cpp
+g++ -std=c++17 -g hash_double_hashing.cpp -o hash_double_hashing.exe
 ./hash_double_hashing.exe
 ```
 
 ## Concepts Covered
-- Hash functions
-- Hash table implementations
-- Collision handling techniques (linear probing, quadratic probing, separate chaining)
-- Different hashing approaches and techniques
+
+- hash functions and indexing
+- collision-resolution techniques
+- probing vs chaining trade-offs

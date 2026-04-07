@@ -1,28 +1,24 @@
-# 1. Pointers
+# Pointers
 
-Understanding pointers - memory addresses, pointer operations, and practical applications.
+Programs for pointer basics and pointer arithmetic in C++.
 
-## Files in this Topic
+## Files
 
-### pointer_basics.cpp
-Introduction to pointer basics, pointer declaration, and fundamental operations.
+- pointer_basics.cpp: declaration, initialization, dereferencing
+- pointer_arithmetic.cpp: increment/decrement and pointer traversal
 
-### pointer_arithmetic.cpp
-Advanced pointer concepts and operations.
-
-## How to Compile and Run
+## Compile and Run
 
 ```bash
-g++ -o pointer_basics pointer_basics.cpp
+g++ -std=c++17 -g pointer_basics.cpp -o pointer_basics.exe
 ./pointer_basics.exe
 
-g++ -o pointer_arithmetic pointer_arithmetic.cpp
+g++ -std=c++17 -g pointer_arithmetic.cpp -o pointer_arithmetic.exe
 ./pointer_arithmetic.exe
 ```
 
 ## Concepts Covered
-- Pointer declaration and initialization
-- Address-of operator (&)
-- Dereference operator (*)
-- Pointer arithmetic
-- Memory management
+
+- address-of and dereference operators
+- memory addresses and pointer variables
+- arithmetic over contiguous memory blocks

@@ -1,23 +1,20 @@
-# 5. Object-Oriented Programming (OOP)
+# Object-Oriented Programming (OOP)
 
-OOP concepts in C++ including encapsulation, data hiding, and class design principles.
+Basic OOP example focused on encapsulation in C++.
 
-## Files in this Topic
+## Files
 
-### encapsulation.cpp
-Encapsulation - wrapping data members and member functions together in a single unit called class. Helps in data hiding and abstraction.
+- encapsulation.cpp: classes, access control, and encapsulation
 
-## How to Compile and Run
+## Compile and Run
 
 ```bash
-g++ -o encapsulation encapsulation.cpp
+g++ -std=c++17 -g encapsulation.cpp -o encapsulation.exe
 ./encapsulation.exe
 ```
 
 ## Concepts Covered
-- Class definition
-- Public and private members
-- Encapsulation and data hiding
-- Getter and setter methods
-- Access control
-- Abstraction principles
+
+- class and object basics
+- public and private access control
+- data hiding through member functions

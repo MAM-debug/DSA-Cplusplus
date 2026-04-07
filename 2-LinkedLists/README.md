@@ -1,28 +1,28 @@
-# 2. Linked Lists
+# Linked Lists
 
 Implementations of singly, doubly, and circular linked lists.
 
 ## Files
 
-- `singly_linked_list.cpp`: Singly linked list operations.
-- `doubly_linked_list.cpp`: Doubly linked list operations.
-- `circular.cpp`: Circular linked list operations.
+- singly_linked_list.cpp: singly linked list operations
+- doubly_linked_list.cpp: doubly linked list operations
+- circular.cpp: circular linked list operations
 
-## Build and Run
+## Compile and Run
 
 ```bash
-g++ -o singly_linked_list singly_linked_list.cpp
+g++ -std=c++17 -g singly_linked_list.cpp -o singly_linked_list.exe
 ./singly_linked_list.exe
 
-g++ -o doubly_linked_list doubly_linked_list.cpp
+g++ -std=c++17 -g doubly_linked_list.cpp -o doubly_linked_list.exe
 ./doubly_linked_list.exe
 
-g++ -o circular circular.cpp
+g++ -std=c++17 -g circular.cpp -o circular.exe
 ./circular.exe
 ```
 
-## Concepts
+## Concepts Covered
 
-- Dynamic node creation
-- Forward and bidirectional traversal
-- Circular linking and pointer updates
+- dynamic node creation
+- forward and backward traversal
+- circular linking and pointer updates
