@@ -1,16 +1,14 @@
 # 2. Linked Lists
 
-Implementation of linked list data structures with various operations like insertion, deletion, and traversal.
+Implementations of singly, doubly, and circular linked lists.
 
-## Files in this Topic
+## Files
 
-### singly_linked_list.cpp
-Implementation of Singly Linked List with insert, display, search, and reverse display operations.
+- `singly_linked_list.cpp`: Singly linked list operations.
+- `doubly_linked_list.cpp`: Doubly linked list operations.
+- `circular.cpp`: Circular linked list operations.
 
-### doubly_linked_list.cpp
-Implementation of Doubly Linked List with insert operations and node navigation in both directions.
-
-## How to Compile and Run
+## Build and Run
 
 ```bash
 g++ -o singly_linked_list singly_linked_list.cpp
@@ -18,12 +16,13 @@ g++ -o singly_linked_list singly_linked_list.cpp
 
 g++ -o doubly_linked_list doubly_linked_list.cpp
 ./doubly_linked_list.exe
+
+g++ -o circular circular.cpp
+./circular.exe
 ```
 
-## Concepts Covered
-- Node structure with data and pointers
-- Singly linked list operations (insert, search, display, reverse)
-- Doubly linked list creation and insertion
-- Memory management for dynamic nodes
-- Traversal in both directions
-- Memory management for linked lists
+## Concepts
+
+- Dynamic node creation
+- Forward and bidirectional traversal
+- Circular linking and pointer updates
