@@ -37,6 +37,34 @@ void pushBack(int value){
         tail = newNode;
     }
 }
+void insertAtPosition(int value, int position){
+    Node* newNode= new Node(value);
+    if(position ==0){
+        pushFront(value);
+        return;
+    }
+
+    Node *temp=head;
+    int idx=0;
+    
+    
+
+    while(temp!=nullptr && idx<position-1){
+        temp=temp->next;
+        idx++;
+    }
+    if(temp==nullptr){
+        cout<<"Position out of bounds"<<endl;
+        delete newNode;
+        return;
+    }
+    if(temp->next == nullptr){
+        pushBack(value);
+        return;
+    }
+    newNode->next=temp->next;
+    temp->next=newNode;
+}
 
 void popFront(){
     if(head == nullptr){
@@ -137,28 +165,56 @@ void display(){
     }
 
     cout<<"NULL"<<endl;
+
+
+}
+int forwarddisplay(Node* temp){
+    if(temp == nullptr){
+        return 0;
+    }
+    cout<<temp->data<<" -> ";
+    forwarddisplay(temp->next);
+}
+int reversedisplay(Node* temp){
+    if(temp == nullptr){
+        return 0;
+    }
+    reversedisplay(temp->next);
+    cout<<temp->data<<" -> ";
 }
 
+
+
 int main(){
+    pushBack(1);
+    pushBack(2);
+    pushBack(3);
+    pushBack(4);
+    pushBack(5);
 
-    pushBack(10);
-    pushBack(20);
-    pushBack(30);
-
-    
-
+    cout<<"Initial list: ";
     display();
 
-    search(10);
-    search(50);
+    cout<<"Inserting 10 at position 2"<<endl;
+    insertAtPosition(10, 2);
+    display();
 
+    cout<<"Popping front"<<endl;
     popFront();
     display();
 
+    cout<<"Popping back"<<endl;
     popBack();
     display();
-    del(20);
+
+    cout<<"Searching for 10"<<endl;
+    search(10);
+
+    cout<<"Deleting 10"<<endl;
+    del(10);
     display();
+    reversedisplay(head);
+    forwarddisplay(head);
 
     return 0;
 }

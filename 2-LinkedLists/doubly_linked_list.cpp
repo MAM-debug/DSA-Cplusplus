@@ -38,29 +38,56 @@ void pushback(int value){
         tail=newNode;
     }
 }
+void insertAtPoistion(int value,int position){
+    Node* newNode=new Node(value);
+    if(position==0){
+        pushfront(value);
+        return; 
+    }
+    Node* temp=head;
+    int idx=0;
+    while(temp!=nullptr && idx<position-1){
+        temp=temp->next;
+        idx++;
+    }
+    if(temp==nullptr){
+        cout<<"position out of bounds"<<endl;
+        delete newNode;
+        return;
+    }
+        if(temp->next==nullptr){
+            pushback(value);
+            return;
+        }
+    newNode->next=temp->next;
+    newNode->prev=temp;
+    temp->next->prev=newNode;
+    temp->next=newNode;
+
+}
 void popfront(){
     if(head==nullptr){
         cout<<"list is empty"<<endl;
         return;
     }
     Node* temp=head;
-    head=head->next;
-    if(head!=nullptr){
-        head->prev=nullptr;
+    if(head==tail){
+        head=tail=nullptr;
     }
     else{
-        tail=nullptr;
+        head=head->next;
+        head->prev=nullptr;
     }
-    
     delete temp;
-    }
+
+}
 void popback(){
     if(head==nullptr){
         cout<<"list is empty"<<endl;
         return;
     }
     Node*temp=tail;
-    if(tail==nullptr){
+    if(head==nullptr){
         head=tail=nullptr;
     }
     else{
@@ -94,7 +121,7 @@ void search(int key){
 }
 void del(int key){
     if(head==nullptr){
-        cout<<"chal bhai"<<endl;
+        cout<<"list is empty"<<endl;
         return;
     }
     if(head->data==key){
@@ -103,28 +130,23 @@ void del(int key){
     }
     if(tail->data==key){
         popback();
-        return; 
-    }
-Node* temp = head->next;
-
-while(temp != nullptr){
-    if(temp->data == key){
-
-        temp->prev->next = temp->next;
-
-        if(temp->next != nullptr){  
-            temp->next->prev = temp->prev;
-        } else {
-            tail = temp->prev;       
-        }
-
-        delete temp;
         return;
     }
-
-    temp = temp->next;
-}
-    cout<<"key not found in the list"<<endl;
+    Node* temp=head->next;
+    while(temp!=nullptr && temp->data!=key){
+        temp=temp->next;
+    }
+    if(temp==nullptr){
+        cout<<"key not found in the list"<<endl;
+        return;
+    }
+    temp->prev->next=temp->next;
+    temp->next->prev=temp->prev;
+    }
+    if(temp==tail){
+        tail=temp->prev;
+    }
+    delete temp;
 }
 int main() {
     pushback(10);
