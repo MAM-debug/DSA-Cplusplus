@@ -1,14 +1,14 @@
 #include <iostream> 
 using namespace std;
 int size=5;
-int arr[5];
+int arr[size];
 int top=-1;
 
 void push(int value){
-    if(top==size-1_{
+    if(top==size-1){
         cout<<"stack overflow"<<endl;
         return;
-    })
+    }
     top++;
     arr[top]=value;
 }
