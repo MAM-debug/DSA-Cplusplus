@@ -39,7 +39,7 @@ void pushBack(int value){
 }
 void insertAtPosition(int value, int position){
     Node* newNode= new Node(value);
-    if(position ==0){
+    if(position == 0){
         pushFront(value);
         return;
     }
@@ -113,7 +113,7 @@ void search(int key){
             cout<<"Key found at index "<<index<<endl;
             return;
         }
-        temp = temp->next;
+        temp=temp->next;                                                                  
         index++;
     }
 
@@ -181,6 +181,18 @@ int reversedisplay(Node* temp){
     }
     reversedisplay(temp->next);
     cout<<temp->data<<" -> ";
+}
+void reversell(){
+    Node* prev= nullptr;
+    Node* curr = head;
+    Node* next = nullptr;
+    while(curr != nullptr){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
 }
 
 

@@ -39,6 +39,26 @@ void pushback(int value){
         tail->next=head;//ye circular linked list ke liye hai..tail update hone ke baad tail ka next bhi head ko point karega
     }//sab kch same hai bas tail ka next head ko point kar raha hai
 }
+void insertAtPosition(int value, int position){
+    if(position==0){
+        pushfront(value);
+        return;
+    }
+    Node* newNode = new Node(value);
+    Node* temp=head;
+    int idx=0;
+    while(temp->next!=head && idx<position-1){
+        temp=temp->next;
+        idx++;
+    }
+    if(temp->next==head){
+        pushback(value);
+        return;
+    }
+    newNode->next=temp->next;
+    temp->next=newNode;
+
+}
 
 void popfront(){
     if (head==nullptr){
@@ -74,17 +94,69 @@ void popback(){
     tail->next=head;
 
 }
-void display(){
+void search(int key){
     if(head==nullptr){
         cout<<"list is empty"<<endl;
         return;
     }
     Node* temp=head;
-    while(temp->next!=head){
-        cout<<temp->data<<" -> ";
+    int index=0;
+    do{
+        if(temp->data==key){
+            cout<<"key found at index "<<index<<endl;
+            return;
+        }
+        temp=temp->next;
+        index++;
+    }while(temp!=head);
+    cout<<"key not found in the list"<<endl;
+
+}
+void del(int key){
+    if(head==nullptr){
+        cout<<"list is empty"<<endl;
+        return;
+    }
+    if(head->data==key){
+        popfront();
+        return;
+    }
+    if(tail->data==key){
+        popback();
+        return;
+    }
+    Node* temp=head;
+    while(temp->next!=head && temp==head 
+    && temp->next!=tail){
+        if(temp->next->data==key){
+            Node* toDelete=temp->next;
+            temp->next=toDelete->next;
+            delete toDelete;
+            return;
+        }
         temp=temp->next;
     }
 
-    
 }
+int main(){
+    pushback(1);
+    pushback(2);
+    pushback(3);
+    pushback(4);
+    pushback(5);
+    display();
+    cout<<"Inserting 10 at position 2"<<endl;
+    insertAtPosition(10,2);
+    display();
+    cout<<"Searching for 3 in the list"<<endl;
+    search(3);
+    cout<<"Searching for 20 in the list"<<endl;
+    search(20);
+    cout<<"Deleting 3 from the list"<<endl;
+    del(3);
+    display();
+}
+
+    
+
 

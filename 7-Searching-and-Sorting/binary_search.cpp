@@ -4,9 +4,9 @@ using namespace std;
 int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 int arr_size = sizeof(arr) / sizeof(arr[0]);
 int binarysearch(int key,int low,int high){
-    if(low>high){
-        return -1;
-    }
+  if (low>high){ 
+    return -1;
+  }
     int mid=(low+high)/2;
     if(arr[mid]==key){
         return mid;

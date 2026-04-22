@@ -1,9 +1,7 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-
-int arr[] = {5, 2, 9, 1, 5, 6};
-int arr_size = sizeof(arr) / sizeof(arr[0]);
-
+int arr[]={64, 34, 25, 12, 22, 11,90,66};
+int arr_size=sizeof(arr)/sizeof(arr[0]);
 void bubblesort(){
     bool swapped;
     for(int i=0;i<arr_size-1;i++){
@@ -14,28 +12,25 @@ void bubblesort(){
                 swapped=true;
             }
         }
-        if(!swapped){
+        if(swapped==false){
             break;
         }
     }
 
 }
-void display(){
-    bubblesort();
-    for(int i=0;i<arr_size;i++){
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
-}
 int main(){
-    cout<<"Before sorting: ";
+    cout<<"Unsorted array: ";
     for(int i=0;i<arr_size;i++){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
-    cout<<"After sorting: ";
-    display();
-    return 0;
+    bubblesort();
+    cout<<"Sorted array: ";
+    for(int i=0;i<arr_size;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+    cout<<arr_size<<endl;
 }
 
 

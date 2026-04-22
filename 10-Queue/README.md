@@ -1,24 +1,23 @@
-# Queue
+# 10-Queue
 
-Programs based on queue data structure implementations.
+Queue implementation practice in C++.
 
-## Files
+## Source Files
 
-- simplequeue.cpp: simple linear queue implementation
-- circularqueue.cpp: circular queue implementation
+- `simplequeue.cpp` - simple linear queue
+- `circularqueue.cpp` - circular queue
 
-## Compile and Run
+## Build and Run
 
 ```bash
 g++ -std=c++17 -g simplequeue.cpp -o simplequeue.exe
 ./simplequeue.exe
-
-g++ -std=c++17 -g circularqueue.cpp -o circularqueue.exe
-./circularqueue.exe
 ```
+
+Use the same command pattern for any other file in this folder.
 
 ## Concepts Covered
 
 - FIFO ordering
-- enqueue and dequeue operations
-- circular indexing for efficient space use
+- Enqueue and dequeue operations
+- Circular indexing for improved space usage

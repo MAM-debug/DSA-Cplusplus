@@ -1,45 +1,48 @@
-# Data Structures and Algorithms in C++
+# Data Structures and Algorithms (C++)
 
-Topic-wise C++ programs for practicing data structures and algorithms.
+This repository is organized by topic, with each folder containing focused C++ practice files.
 
-## Topics
+## Repository Structure
 
-1. [Pointers](1-Pointers)
-2. [Linked Lists](2-LinkedLists)
-3. [Hashing](3-Hashing)
-4. [Data Structures](4-DataStructures)
-5. [OOP](5-OOP)
-6. [Arrays Basics](6-Arrays-Basics)
-7. [Searching and Sorting](7-Searching-and-Sorting)
-8. [Trees](8- Trees)
-9. [Stack](9-Stack)
-10. [Queue](10-Queue)
+1. `1-Pointers` - pointer basics and pointer arithmetic
+2. `2-LinkedLists` - singly, doubly, and circular linked list variants
+3. `3-Hashing` - hashing fundamentals and collision-resolution methods
+4. `4-DataStructures` - additional linked data structure practice
+5. `5-OOP` - object-oriented programming basics
+6. `6-Arrays-Basics` - array fundamentals and linear search
+7. `7-Searching-and-Sorting` - searching and classical sorting algorithms
+8. `8-Trees` - tree-related implementations and practice
+9. `9-Stack` - stack implementations
+10. `10-Queue` - queue implementations
+11. `11-Recursion` - recursion patterns and problems
+12. `12-GRAPHS` - graph data structures and algorithms
 
 ## Topic Summary
 
-| Topic                 | Files | Main Ideas                                   |
-| --------------------- | ----: | -------------------------------------------- |
-| Pointers              |     2 | addresses, dereferencing, pointer arithmetic |
-| Linked Lists          |     3 | singly, doubly, circular lists               |
-| Hashing               |     5 | hash functions, probing, chaining            |
-| Data Structures       |     1 | multi-level linked list                      |
-| OOP                   |     1 | classes, encapsulation                       |
-| Arrays Basics         |     2 | array operations, linear search              |
-| Searching and Sorting |    10 | binary search, classical sorting algorithms  |
-| Trees                 |     4 | binary tree, BST, AVL, expression conversion |
-| Stack                 |     2 | stack operations and variations              |
-| Queue                 |     2 | simple and circular queue                    |
+| Topic Folder              | `.cpp` Files |
+| ------------------------- | -----------: |
+| `1-Pointers`              |            2 |
+| `2-LinkedLists`           |            5 |
+| `3-Hashing`               |            5 |
+| `4-DataStructures`        |            1 |
+| `5-OOP`                   |            1 |
+| `6-Arrays-Basics`         |            3 |
+| `7-Searching-and-Sorting` |            9 |
+| `8-Trees`                 |            4 |
+| `9-Stack`                 |            2 |
+| `10-Queue`                |            2 |
+| `12-GRAPHS`               |            1 |
 
 ## Build and Run
 
-Use this pattern from inside a topic folder:
+Run commands from inside the topic folder:
 
 ```bash
-g++ -std=c++17 -g filename.cpp -o program.exe
-./program.exe
+g++ -std=c++17 -g filename.cpp -o filename.exe
+./filename.exe
 ```
 
 ## Notes
 
-- Each topic folder has a local README with file-level details.
-- Existing .exe files in folders are compiled outputs.
+- Every topic folder has its own `README.md` with file-level details.
+- Existing `.exe` files are compiled outputs and are not source files.

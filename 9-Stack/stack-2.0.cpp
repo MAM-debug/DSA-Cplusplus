@@ -36,6 +36,15 @@ void display(){
     }
     cout<<"NULL"<<endl;
 }
+void reversestack(){
+    int start=0;
+    int end=top;
+    while(start<end){
+        swap(arr[start],arr[end]);
+        start++;
+        end--;
+    }
+}
 int main(){
     push(10);
     push(20);
@@ -45,5 +54,9 @@ int main(){
     pop();
     display();
     peek();
+    reversestack();
+    display();
+    peek();
+
     return 0;
 }

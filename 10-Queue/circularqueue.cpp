@@ -1,38 +1,60 @@
-#include <iosrtream>
+#include <iostream>
 using namespace std;
+#define size 5
+int arr[size];
+int front=-1;
+int rear=-1;
 
-struct Node{
-    int data;
-    Node*next;
-    Node(int value){
-        data=value;
-        next=nullptr;
-    }
-};
-Node*front=nullptr;
-Node*rear=nullptr;
 void enqueue(int value){
-    Node*newNode= new Node(value);
-    if(rear==nullptr){
-        front=rear=newNode;
+    if((rear+1)%size==front){
+        cout<<"queue overflow"<<endl;
+        return;
+    }else if(front==-1 && rear==-1){
+        front=rear=0;
+    }else{
+        rear=(rear+1)%size;
     }
-    else{
-        rear->next=newNode;
-        rear=newNode;
-        rear->next=front; // Make it circular.its that easy
-
-    }
+    arr[rear]=value;
 };
-void dequeue(int value){
-    if(front==nullptr){
-        cout<<"Queue is empty"<<endl;
+void dequeue(){
+    if(front==-1 && rear==-1){
+        cout<<"queue underflow"<<endl;
+        return;
+    }else if(front == rear){
+        front=rear=-1;
+    }else{
+        front=(front+1)%size;
+    }
+}
+void display(){
+    if(front==-1 && rear==-1){
+        cout<<"queue is empty"<<endl;
         return;
     }
-    Node*temp=front;
-    front=front->next;
-    rear->next=front; // Update rear's next to the new front
-    delete temp;
-    if(front==nullptr){
-        rear=nullptr;
+    int i=front;
+    while(i!=rear){
+        cout<<arr[i]<<" -> ";
+        i=(i+1)%size;
     }
+    cout<<arr[rear]<<" -> NULL"<<endl;
+}
+int main(){
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    enqueue(40);
+    enqueue(50);
+    display();
+    dequeue();
+    display();
+    dequeue();
+    display();
+    dequeue();
+    display();
+    dequeue();
+    display();
+    dequeue();
+    display();
+
+    return 0;
 }

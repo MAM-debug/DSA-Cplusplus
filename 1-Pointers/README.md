@@ -1,24 +1,23 @@
-# Pointers
+# 1-Pointers
 
-Programs for pointer basics and pointer arithmetic in C++.
+Practice files for core pointer concepts in C++.
 
-## Files
+## Source Files
 
-- pointer_basics.cpp: declaration, initialization, dereferencing
-- pointer_arithmetic.cpp: increment/decrement and pointer traversal
+- `pointer_basics.cpp` - pointer declaration, initialization, and dereferencing
+- `pointer_arithmetic.cpp` - pointer movement and traversal over contiguous memory
 
-## Compile and Run
+## Build and Run
 
 ```bash
 g++ -std=c++17 -g pointer_basics.cpp -o pointer_basics.exe
 ./pointer_basics.exe
-
-g++ -std=c++17 -g pointer_arithmetic.cpp -o pointer_arithmetic.exe
-./pointer_arithmetic.exe
 ```
+
+Use the same command pattern for any other file in this folder.
 
 ## Concepts Covered
 
-- address-of and dereference operators
-- memory addresses and pointer variables
-- arithmetic over contiguous memory blocks
+- Address-of and dereference operators
+- Memory addresses and pointer variables
+- Pointer arithmetic basics

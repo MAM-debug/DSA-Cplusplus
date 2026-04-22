@@ -36,6 +36,7 @@ void pushback(int value){
         tail->next=newNode;
         newNode->prev=tail;
         tail=newNode;
+        tail->next=nullptr;
     }
 }
 void insertAtPoistion(int value,int position){
@@ -142,12 +143,12 @@ void del(int key){
     }
     temp->prev->next=temp->next;
     temp->next->prev=temp->prev;
-    }
     if(temp==tail){
         tail=temp->prev;
     }
     delete temp;
 }
+
 int main() {
     pushback(10);
     pushback(20);

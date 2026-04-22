@@ -1,69 +1,74 @@
 #include <iostream>
 using namespace std;
-
 int tablesize=10; // Hash table of size 10
 int hashfunction (int key)
 {
     return key % tablesize; // Simple hash function
 };
-void insert(int key,int hashtable[]){
-
+void insert(int key,int hashTable[]){
     int index=hashfunction(key);
-    int startindex=0; // Store the starting index to detect loop
-    while(hashtable[index]!=-1 && hashtable[index]!=-2){ // Linear probing to resolve collision
-        cout<<"Collision occurred for key "<<key<<" at index "<<index<<endl;
-        index=(index+1)%tablesize; // Move to the next index
-        startindex++; // Increment the start index to detect loop
-        if(startindex==tablesize){ // If we have looped back to the start index, the table is full
+    int i=0;
+    while(hashTable[index]!=-1 && hashTable[index]!=-2){
+        cout<<"Collision occured for key "<<key<<" at index "<<index<<endl;
+        index=(index+1)%tablesize;//linear probing
+        i++;
+        if(i==tablesize){ // If we have probed all indices, the table is full
             cout<<"Hash table is full, cannot insert key "<<key<<endl;
             return;
         }
+
     }
-    hashtable[index]=key; // Insert the key at the found index
+    hashTable[index]=key;
 }
-void display(int hashtable[]){
+void deletion(int key,int hashTable[]){
+    int index=hashfunction(key);
+    int i=0;
+    while(hashTable[index]!=-1){
+        if(hashTable[index]==key){
+            hashTable[index]=-2; // Mark as deleted
+            return;
+        
+        }
+        index=(index+1)%tablesize; // linear probing
+        i++;
+        if(i==tablesize){ // If we have probed all indices, the key is not found
+            cout<<"Key "<<key<<" not found in the hash table."<<endl;
+            return;
+        }
+
+    }
+}
+void display(int hashTable[]){
     for(int i=0;i<tablesize;i++){
-        cout<<i<<" : "<<hashtable[i]<<endl;
-    }
-}
-void delkey(int key,int hashtable[]){
-    int index=hashfunction(key);
-    int startindex=index; // Store the starting index to detect loop
-    while(hashtable[index]!=-1){ // Linear probing to find the key
-        if(hashtable[index]==key){
-            hashtable[index]=-2; // Mark as deleted
-            return;
-        }
-        index=(index+1)%tablesize; // Move to the next index
-        if(index==startindex){ // If we have looped back to the start index, the key is not found
-            cout<<"Key not found, cannot delete key "<<key<<endl;
-            return;
+        if(hashTable[i]!=-1 && hashTable[i]!=-2){
+        cout<<i<<" : "<<hashTable[i]<<endl;
         }
     }
 }
-int search(int key,int hashtable[]){
+void search(int key,int hashTable[]){
     int index=hashfunction(key);
-    int startindex=index; // Store the starting index to detect loop
-    while(hashtable[index]!=-1){
-        if(hashtable[index]==key){
+    int i=0;
+    while(hashTable[index]!=-1){
+        if(hashTable[index]==key){
             cout<<"key found at index "<<index<<endl;
             return;
         }
-        index=(index+1)%tablesize; // Move to the next index
-        if(index==startindex){ // If we have looped back to the start index, the key is not found
-            cout<<"key not found"<<endl;
+        index=(index+1)%tablesize; // linear probing
+        i++;
+        if(i==tablesize){ // If we have probed all indices, the key is not found
+            cout<<"Key "<<key<<" not found in the hash table."<<endl;
             return;
         }
     }
     cout<<"key not found"<<endl;
 }
 int main(){
-    int hashtable[tablesize];
-    for(int i=0;i<tablesize;i++){  
-        hashtable[i]=-1; // Initialize hash table with -1 (indicating empty)
+    int hashTable[tablesize];
+    for(int i=0;i<tablesize;i++){
+        hashTable[i]=-1; // Initialize hash table with -1 (indicating empty)
     }
-    insert(1,hashtable);
-    insert(11,hashtable); // This will cause a collision with key 1 
-    insert(2,hashtable);
-    display(hashtable);         
+    insert(1,hashTable);
+    insert(11,hashTable); // This will cause a collision with key 1 
+    insert(2,hashTable);
+    display(hashTable);         
 }

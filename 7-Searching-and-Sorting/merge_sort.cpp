@@ -1,72 +1,62 @@
 #include <iostream>
 using namespace std;
 
-// divide and conquer approach
+void merge(int arr[],int l,int mid,int r){
+    int n1 = mid - l + 1;
+    int n2 = r - mid;
 
-// ✅ STEP 1 - merge function (combines two sorted halves)
-void merge(int arr[], int start, int mid, int end) {
-    int n1=mid-start+1; // size of left half
-    int n2= end-mid;//size of right half
-    int left[n1], right[n2];
-    for (int i=0;i<n1;i++) {
-        left[i]=arr[start+i];
+    int arr1[n1], arr2[n2];
+
+    for(int i=0;i<n1;i++){
+        arr1[i] = arr[l+i];
     }
-    for (int j=0;j<n2;j++){
-        right[j]=arr[mid+1+j];
+    for(int j=0;j<n2;j++){
+        arr2[j] = arr[mid+1+j];
     }
-    int i=0,j=0,k=start;
+
+    int i=0, j=0, k=l;
+
     while(i<n1 && j<n2){
-        if(left[i]<=right[j]){
-            arr[k]=left[i];
+        if(arr1[i] < arr2[j]){
+            arr[k] = arr1[i];
             i++;
         }
         else{
-            arr[k]=right[j];
+            arr[k] = arr2[j];
             j++;
         }
-       
         k++;
-        
     }
+
     while(i<n1){
-        arr[k]=left[i];
+        arr[k] = arr1[i];
         i++;
         k++;
     }
+
     while(j<n2){
-        arr[k]=right[j];
+        arr[k] = arr2[j];
         j++;
         k++;
     }
-
-
-
 }
 
-// ✅ STEP 2 - mergeSort function (does the splitting)
-void mergeSort(int arr[], int start, int end) {
-    
-    if (start >= end) return;
-    int mid = start + (end - start) / 2;
-
-    mergeSort(arr, start, mid);       // sort left half
-    mergeSort(arr, mid + 1, end);     // sort right half
-    merge(arr, start, mid, end);      // merge both halv
-
+void mergesort(int arr[],int l,int r){
+    if(l<r){
+        int mid = (l+r)/2;
+        mergesort(arr,l,mid);
+        mergesort(arr,mid+1,r);
+        merge(arr,l,mid,r);
+    }
 }
-int main() {
-    int arr[]={38,33,27,23,44,24,42};
+
+int main(){
+    int arr[]={38,27,43,3,9,82,10};
     int n=sizeof(arr)/sizeof(arr[0]);
-    cout<<"Original array: ";
+
+    mergesort(arr,0,n-1);
+
     for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
     }
-    mergeSort(arr,0,n-1);
-    cout<<"Sorted array: ";
-    for(int i=0;i<n;i++){
-        cout<<arr[i]<<" ";
-    }
-
-
-
 }

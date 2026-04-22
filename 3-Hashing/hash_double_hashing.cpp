@@ -1,46 +1,28 @@
-#include <iostream>
+//double hashing practice
+
+#include<iostream>
 using namespace std;
 
-const int TABLE_SIZE = 11;
-
-int hashTable[TABLE_SIZE];   
-
-int hashFunction(int key) {
-    return key % TABLE_SIZE;
+int tablesize=13; // Hash table of size 13
+int hashtable[13]; // Hash table array
+int hashfunction1(int key){
+    return key%tablesize; // First hash function
 }
-
-void inser(int key) {
-
-    int hashIndex = hashFunction(key);
-
-    for(int i = 0; i < TABLE_SIZE; i++) {
-
-        int newIndex = (hashIndex + i*i) % TABLE_SIZE;
-
-        if(hashTable[newIndex] == -1) {
-            hashTable[newIndex] = key;
-            cout << "Key: " << key 
-                 << " inserted at index: " << newIndex << endl;
+int hashfunction2(int key){
+    return 11-(key%11); // Second hash function, must be non-zero and less than tablesize
+}
+void insert(int key){
+    int index=hashfunction1(key);
+    int jump=hashfunction2(key);
+    int i=0;
+    while(hashtable[index]!=-1 && hashtable[index]!=-2){
+        cout<<"Collision occurred for key "<<key<<" at index "<<index<<endl;
+        i++;
+        index=(index+jump)%tablesize; // Double hashing to resolve collision
+        if(i==tablesize){ // If we have probed all indices, the table is full
+            cout<<"Hash table is full, cannot insert key "<<key<<endl;
             return;
         }
     }
-
-    cout << "Sorry, Hash Table is FULL!" << endl;
+    hashtable[index]=key;
 }
-
-int main() {
-
-    for(int i = 0; i < TABLE_SIZE; i++)
-        hashTable[i] = -1;
-
-    int keys[] = {8, 15, 22, 29, 36};
-
-    for(int i = 0; i < 5; i++)
-        inser(keys[i]);
-
-    return 0;
-}
-
-// We use a prime table size and quadratic probing formula (h + i²) % tableSize.
-//The loop is limited to table size to prevent infinite looping.
-//If an empty slot (-1) is found, we insert the key; otherwise, we declare the table full.

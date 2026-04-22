@@ -43,6 +43,19 @@ void display(){
     }
     cout<<"NULL"<<endl;
 }
+
+void reversestack(){
+    Node* prev=nullptr;
+    Node* curr=head;
+    Node* next=nullptr;
+    while(curr!=nullptr){
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+    }
+    head=prev;
+}
 int main(){
     push(10);
     push(20);
@@ -50,6 +63,9 @@ int main(){
     display();
     peek();
     pop();
+    display();
+    peek();
+    reversestack();
     display();
     peek();
     return 0;

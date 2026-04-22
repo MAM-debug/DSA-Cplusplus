@@ -1,12 +1,12 @@
-# Data Structures
+# 4-DataStructures
 
-Practice for composite and multi-level linked structures.
+Practice for additional linked data structure patterns.
 
-## Files
+## Source Files
 
-- multi_level_linked_list.cpp: multi-level linked list representation
+- `multi_level_linked_list.cpp` - multi-level linked list representation
 
-## Compile and Run
+## Build and Run
 
 ```bash
 g++ -std=c++17 -g multi_level_linked_list.cpp -o multi_level_linked_list.exe
@@ -15,6 +15,6 @@ g++ -std=c++17 -g multi_level_linked_list.cpp -o multi_level_linked_list.exe
 
 ## Concepts Covered
 
-- multi-level node design
-- hierarchical pointer relationships
-- traversal across nested structures
+- Multi-level node design
+- Hierarchical pointer relationships
+- Traversal across nested structures

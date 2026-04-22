@@ -1,33 +1,26 @@
-# Trees
+# 8- Trees
 
-Implementations of tree-based structures and related expressions.
+Tree-related implementations and practice files.
 
-## Files
+## Source Files
 
-- Binarytree.cpp: binary tree operations and traversal
-- binarysearchtree.cpp: binary search tree operations
-- AVL075.cpp: AVL tree balancing and rotations
-- infixtopostix.cpp: infix to postfix conversion using stack logic
+- `Binarytree.cpp` - binary tree operations and traversal
+- `binarysearchtree.cpp` - binary search tree operations
+- `AVL075.cpp` - AVL tree balancing and rotations
+- `Abdullahmateen_075_pfe.cpp` - additional tree/problem-solving implementation
 
-## Compile and Run
+## Build and Run
 
 ```bash
 g++ -std=c++17 -g Binarytree.cpp -o Binarytree.exe
 ./Binarytree.exe
-
-g++ -std=c++17 -g binarysearchtree.cpp -o binarysearchtree.exe
-./binarysearchtree.exe
-
-g++ -std=c++17 -g AVL075.cpp -o AVL075.exe
-./AVL075.exe
-
-g++ -std=c++17 -g infixtopostix.cpp -o infixtopostix.exe
-./infixtopostix.exe
 ```
+
+Use the same command pattern for any other file in this folder.
 
 ## Concepts Covered
 
-- binary tree representation and traversal
-- binary search tree insertion/search patterns
+- Binary tree representation and traversal
+- Binary search tree insertion/search patterns
 - AVL balancing through rotations
-- infix to postfix expression conversion
+- Tree-based problem-solving practice

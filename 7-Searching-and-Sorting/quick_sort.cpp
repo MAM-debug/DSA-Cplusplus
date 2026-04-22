@@ -1,49 +1,33 @@
 #include <iostream>
 using namespace std;
 
-int arr[] = {38,33,27,23,44,24,42};
+int arr[]={10,7,8,9,1,5};
 
-void exchange(int a, int b){
-    int temp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = temp;
-}
-
-int splitting(int left, int right){
-    int pivot = arr[right];
-    int i = left - 1; // pointer for smaller elements
-
-    for(int j = left; j < right; j++){ // pointer to traverse array
-        if(arr[j] < pivot){
-            i++;
-            exchange(i, j);
+int partition(int low,int high){
+    int pivot=arr[low];
+    int p=low+1;
+    int q=high;
+    while(p<=q){
+        while(p<=high && arr[p]<=pivot) //equal paai agai chlta rehega
+        {
+            p++;
         }
-    }
-    exchange(i+1, right);
-    return i+1; // pivot index after partition
+        while(q>=low && arr[q]>pivot){//equal paai rukjaega
+            q--;
+        }
+        if(p<q){
+            swap(arr[p],arr[q]);   
+        }
+
+    
 }
-
-void quicksort(int left, int right){
-    if(left < right){
-        int pivotIndex = splitting(left, right);
-        quicksort(left, pivotIndex-1); // sort left half
-        quicksort(pivotIndex+1, right); // sort right half
-    }
+    swap(arr[low],arr[q]);
+    return q;
 }
-
-int main(){
-    int n = sizeof(arr)/sizeof(arr[0]);
-    cout << "Original array: ";
-    for(int i = 0; i < n; i++){
-        cout << arr[i] << " ";
+void quicksort(int low,int high){
+    if(low<high){
+        int pi=partition(low,high);
+        quicksort(low,pi-1);
+        quicksort(pi+1,high);
     }
-    cout << endl;
-
-    quicksort(0, n-1);
-
-    cout << "Sorted array: ";
-    for(int i = 0; i < n; i++){
-        cout << arr[i] << " ";
-    }
-    cout << endl;
 }
